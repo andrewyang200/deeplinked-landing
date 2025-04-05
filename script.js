@@ -1,597 +1,506 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
+
+    // --- Mobile Menu Toggle ---
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    const ctaButtons = document.querySelector('.cta-buttons');
-    
-    if (menuToggle) {
+    const ctaButtons = document.querySelector('.cta-buttons'); // Get the original CTA buttons container
+
+    if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            ctaButtons.classList.toggle('active');
+            const isActive = navLinks.classList.toggle('active');
             menuToggle.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+
+            // Clone and manage CTA buttons for mobile menu
+            if (isActive) {
+                // Clone buttons IF they don't exist in mobile yet
+                if (!navLinks.querySelector('.cta-buttons-mobile')) {
+                    const ctaClone = ctaButtons.cloneNode(true);
+                    ctaClone.classList.add('cta-buttons-mobile'); // Add class to identify mobile clone
+                    ctaClone.classList.add('mobile-active'); // Style for mobile display
+                    navLinks.appendChild(ctaClone); // Append clone to nav links container
+                }
+                 navLinks.querySelector('.cta-buttons-mobile').classList.add('mobile-active');
+            } else {
+                const mobileCtas = navLinks.querySelector('.cta-buttons-mobile');
+                if (mobileCtas) {
+                    mobileCtas.classList.remove('mobile-active');
+                    // Optional: Remove clone completely when menu closes
+                    // mobileCtas.remove();
+                }
+            }
         });
     }
-    
-    // Product gallery carousel
+
+    // --- Header Scroll Effect ---
+    const header = document.querySelector('header');
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
+
+    // --- Product Gallery Carousel ---
     const galleryItems = document.querySelectorAll('.gallery-item');
     const galleryDots = document.querySelectorAll('.gallery-dots .dot');
     let galleryIndex = 0;
-    
+    let galleryInterval;
+
     function showGalleryItem(index) {
-        // Hide all gallery items
-        galleryItems.forEach(item => {
-            item.classList.remove('active');
-        });
-        
-        // Remove active class from all dots
-        galleryDots.forEach(dot => {
-            dot.classList.remove('active');
-        });
-        
-        // Show the current gallery item and activate its dot
-        galleryItems[index].classList.add('active');
-        galleryDots[index].classList.add('active');
+        if (galleryItems.length === 0) return;
+
+        const currentActive = document.querySelector('.gallery-item.active');
+        if (currentActive) {
+            currentActive.classList.add('exiting');
+            currentActive.classList.remove('active');
+        }
+
+        galleryDots.forEach(dot => dot.classList.remove('active'));
+
+        // Use setTimeout to allow exit animation to start before removing display:none
+        setTimeout(() => {
+            if(currentActive) currentActive.classList.remove('exiting'); // Clean up exiting class
+
+            galleryItems[index].classList.add('active');
+            galleryDots[index].classList.add('active');
+            galleryIndex = index; // Update current index
+        }, 50); // Small delay, adjust if needed
     }
-    
-    // Initialize gallery
+
+    function startGalleryInterval() {
+        clearInterval(galleryInterval); // Clear existing interval
+        galleryInterval = setInterval(() => {
+            const nextIndex = (galleryIndex + 1) % galleryItems.length;
+            showGalleryItem(nextIndex);
+        }, 5000); // Change slide every 5 seconds
+    }
+
     if (galleryItems.length > 0) {
-        showGalleryItem(galleryIndex);
-        
-        // Add click event to dots
+        showGalleryItem(galleryIndex); // Show initial item
+        startGalleryInterval(); // Start auto-rotation
+
         galleryDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
-                galleryIndex = index;
-                showGalleryItem(galleryIndex);
+                if (index !== galleryIndex) { // Only act if clicking a different dot
+                    showGalleryItem(index);
+                    startGalleryInterval(); // Reset interval timer on manual click
+                }
             });
         });
-        
-        // Auto-rotate gallery items
-        setInterval(() => {
-            galleryIndex = (galleryIndex + 1) % galleryItems.length;
-            showGalleryItem(galleryIndex);
-        }, 4000);
     }
-    
-    // Testimonial slider functionality
-    const testimonials = document.querySelectorAll('.testimonial');
-    const dots = document.querySelectorAll('.testimonial-dots .dot');
-    let currentIndex = 0;
-    
+
+    // --- Testimonial Slider ---
+    const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+    const testimonialDots = document.querySelectorAll('.testimonial-dots .dot');
+    let testimonialIndex = 0;
+    let testimonialInterval;
+
     function showTestimonial(index) {
-        // Hide all testimonials
-        testimonials.forEach(testimonial => {
-            testimonial.style.display = 'none';
+        if (testimonialSlides.length === 0) return;
+        testimonialSlides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
         });
-        
-        // Remove active class from all dots
-        dots.forEach(dot => {
-            dot.classList.remove('active');
+        testimonialDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
         });
-        
-        // Show the current testimonial and activate its dot
-        testimonials[index].style.display = 'block';
-        dots[index].classList.add('active');
+        testimonialIndex = index;
     }
-    
-    // Initialize testimonials
-    if (testimonials.length > 0) {
-        showTestimonial(currentIndex);
-        
-        // Add click event to dots
-        dots.forEach((dot, index) => {
+
+     function startTestimonialInterval() {
+        clearInterval(testimonialInterval); // Clear existing interval
+        testimonialInterval = setInterval(() => {
+            const nextIndex = (testimonialIndex + 1) % testimonialSlides.length;
+            showTestimonial(nextIndex);
+        }, 6000); // Change testimonial every 6 seconds
+    }
+
+    if (testimonialSlides.length > 0) {
+        showTestimonial(testimonialIndex); // Show initial item
+        startTestimonialInterval();
+
+        testimonialDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
-                currentIndex = index;
-                showTestimonial(currentIndex);
+                 if (index !== testimonialIndex) {
+                    showTestimonial(index);
+                    startTestimonialInterval(); // Reset interval timer
+                 }
             });
         });
-        
-        // Auto-rotate testimonials
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % testimonials.length;
-            showTestimonial(currentIndex);
-        }, 5000);
     }
-    
-    // File upload functionality
+
+
+    // --- Enhanced File Upload Functionality ---
     const fileInput = document.getElementById('resume-upload');
-    const fileLabel = document.querySelector('.file-text');
-    
-    if (fileInput) {
-        fileInput.addEventListener('change', function() {
+    const fileLabel = document.getElementById('resume-label'); // The <label> element
+    const fileNameDisplay = document.getElementById('file-name-display');
+    const fileLabelDefaultContent = document.getElementById('file-label-default');
+    const resumeError = document.getElementById('resume-error');
+
+
+    if (fileInput && fileLabel && fileNameDisplay && fileLabelDefaultContent) {
+        fileInput.addEventListener('change', handleFileSelect);
+        fileLabel.addEventListener('dragover', handleDragOver);
+        fileLabel.addEventListener('dragleave', handleDragLeave);
+        fileLabel.addEventListener('drop', handleDrop);
+
+        function handleFileSelect() {
             if (fileInput.files.length > 0) {
-                fileLabel.textContent = fileInput.files[0].name;
+                fileNameDisplay.textContent = fileInput.files[0].name;
+                fileLabel.classList.add('has-file');
+                fileLabel.classList.remove('invalid'); // Clear error on new selection
+                if(resumeError) resumeError.style.display = 'none';
             } else {
-                fileLabel.textContent = 'Upload Your Résumé';
+                resetFileLabel();
             }
-        });
+        }
+
+         function handleDragOver(event) {
+            event.preventDefault();
+            fileLabel.classList.add('dragover');
+        }
+
+        function handleDragLeave() {
+            fileLabel.classList.remove('dragover');
+        }
+
+        function handleDrop(event) {
+            event.preventDefault();
+            fileLabel.classList.remove('dragover');
+            // Assign dropped files to input & trigger change event
+            if (event.dataTransfer.files.length > 0) {
+                fileInput.files = event.dataTransfer.files;
+                handleFileSelect(); // Manually trigger update
+            }
+        }
+
+        function resetFileLabel() {
+            fileInput.value = ''; // Clear the input value
+            fileNameDisplay.textContent = '';
+            fileLabel.classList.remove('has-file');
+            fileLabel.classList.remove('dragover');
+            // Don't remove 'invalid' class here, let validation handle it
+        }
     }
-    
-    // Demo search functionality
+
+    // --- Enhanced Demo Search Functionality ---
     const demoSearchInput = document.getElementById('demo-search-input');
     const demoSearchButton = document.getElementById('demo-search-button');
     const searchResults = document.getElementById('search-results');
-    
-    if (demoSearchButton && searchResults) {
-        demoSearchButton.addEventListener('click', function() {
+
+    if (demoSearchButton && searchResults && demoSearchInput) {
+        // Example placeholder cycling
+        const placeholders = [
+            "Find product managers who worked at Google and have AI experience",
+            "Show me software engineers skilled in Python & AWS based in London",
+            "Search for marketing directors with SaaS startup experience",
+            "Find potential mentors in UX design with 10+ years experience"
+        ];
+        let placeholderIndex = 0;
+        if (placeholders.length > 0) {
+            demoSearchInput.placeholder = `E.g., '${placeholders[0]}'`; // Set initial
+            setInterval(() => {
+                placeholderIndex = (placeholderIndex + 1) % placeholders.length;
+                demoSearchInput.placeholder = `E.g., '${placeholders[placeholderIndex]}'`;
+            }, 4000);
+        }
+
+        demoSearchButton.addEventListener('click', performDemoSearch);
+        // Optional: Allow Enter key to trigger search
+        demoSearchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performDemoSearch();
+            }
+        });
+
+        function performDemoSearch() {
             const query = demoSearchInput.value.trim();
-            
+
             if (query.length === 0) {
-                searchResults.innerHTML = '<p>Please enter a search query.</p>';
+                searchResults.innerHTML = '<p class="search-placeholder">Please enter a search query like the examples above.</p>';
                 return;
             }
-            
-            // Show loading state
-            searchResults.innerHTML = '<p>Searching...</p>';
-            
-            // Simulate API call with timeout
+
+            // Show improved loading state
+            searchResults.innerHTML = `
+                <div class="loading-indicator">
+                    <div class="spinner"></div>
+                    <p>DeepLinked AI is searching...</p>
+                </div>`;
+
+            // Simulate API call
             setTimeout(() => {
-                // Generate mock results based on the query
                 displayMockResults(query);
             }, 1500);
-        });
+        }
     }
-    
+
     function displayMockResults(query) {
         // Simple logic to generate mock results based on query keywords
-        let results = '';
-        
-        if (query.toLowerCase().includes('product') && query.toLowerCase().includes('manager')) {
-            results = `
+        let resultsHTML = '';
+        const sanitizedQuery = query.toLowerCase();
+
+        // Create a more realistic result structure
+        const mockProfiles = [
+             { name: "Alex Kim", title: "Senior Product Manager", company: "TechCorp", match: 98, reason: "Google alumnus + AI experience", exp: "6 years at Google AI Products, 2 years at TechCorp", skills: "Product Strategy, AI/ML Products, User Research" },
+             { name: "Priya Sharma", title: "Product Lead", company: "AI Solutions", match: 95, reason: "Google alumnus + AI specialization", exp: "4 years at Google, 3 years at AI Solutions", skills: "Product Management, AI Products, Strategic Planning" },
+             { name: "Michael Chen", title: "Product Manager", company: "InnovateTech", match: 92, reason: "Google Cloud experience + AI project focus", exp: "3 years at Google Cloud, 2 years at InnovateTech", skills: "Product Development, AI Integration, Market Analysis" },
+             { name: "Jason Lee", title: "Senior Software Engineer", company: "TechGiant", match: 97, reason: "Full-stack expertise + 7 years experience", exp: "4 years at CodeCorp, 3 years at TechGiant", skills: "React, Node.js, Python, AWS, Machine Learning" },
+             { name: "Sophia Garcia", title: "Lead Developer", company: "StartupX", match: 94, reason: "Frontend specialist + startup experience", exp: "5 years at WebTech, 2 years at StartupX", skills: "JavaScript, Vue.js, React, UI/UX, Web Performance" },
+             { name: "David Wilson", title: "Backend Engineer", company: "DataSystems", match: 91, reason: "Database expertise + scalability focus", exp: "6 years at various tech companies", skills: "Java, Python, SQL, MongoDB, Microservices" },
+             { name: "Taylor Johnson", title: "Marketing Director", company: "BrandCo", match: 96, reason: "Industry expertise + leadership skills", exp: "8 years in digital marketing", skills: "Brand Strategy, Content Marketing, Team Leadership" },
+             { name: "Jordan Smith", title: "Data Scientist", company: "AnalyticsPro", match: 93, reason: "Statistical expertise + industry knowledge", exp: "5 years in data science and analytics", skills: "Machine Learning, Python, R, Data Visualization" }
+        ];
+
+        // Filter mock profiles based on query (very simplistic filtering)
+        const filteredProfiles = mockProfiles.filter(profile => {
+            const profileText = `${profile.name} ${profile.title} ${profile.company} ${profile.reason} ${profile.skills}`.toLowerCase();
+            const queryTerms = sanitizedQuery.split(' ').filter(term => term.length > 2); // Basic split and ignore small words
+             // Check if *some* terms match (adjust logic for better matching)
+             return queryTerms.some(term => profileText.includes(term));
+        }).slice(0, 3); // Limit to 3 results for demo
+
+        if (filteredProfiles.length > 0) {
+             resultsHTML = `
                 <div class="result-header">
-                    <h3>Search Results for: "${query}"</h3>
-                    <p>Found 3 relevant professionals</p>
+                    <h3>Results for: "${query}"</h3>
+                    <p>Found ${filteredProfiles.length} relevant professional${filteredProfiles.length > 1 ? 's' : ''}</p>
                 </div>
                 <div class="result-list">
-                    <div class="result-item">
-                        <div class="result-profile">
-                            <div class="result-avatar"></div>
-                            <div class="result-info">
-                                <h4>Alex Kim</h4>
-                                <p>Senior Product Manager at TechCorp</p>
-                                <div class="result-match">
-                                    <span class="match-tag">98% Match</span>
-                                    <span class="match-reason">Google alumnus + AI experience</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="result-details">
-                            <p><strong>Experience:</strong> 6 years at Google AI Products, 2 years at TechCorp</p>
-                            <p><strong>Skills:</strong> Product Strategy, AI/ML Products, User Research</p>
-                        </div>
-                    </div>
-                    <div class="result-item">
-                        <div class="result-profile">
-                            <div class="result-avatar"></div>
-                            <div class="result-info">
-                                <h4>Priya Sharma</h4>
-                                <p>Product Lead at AI Solutions</p>
-                                <div class="result-match">
-                                    <span class="match-tag">95% Match</span>
-                                    <span class="match-reason">Google alumnus + AI specialization</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="result-details">
-                            <p><strong>Experience:</strong> 4 years at Google, 3 years at AI Solutions</p>
-                            <p><strong>Skills:</strong> Product Management, AI Products, Strategic Planning</p>
-                        </div>
-                    </div>
-                    <div class="result-item">
-                        <div class="result-profile">
-                            <div class="result-avatar"></div>
-                            <div class="result-info">
-                                <h4>Michael Chen</h4>
-                                <p>Product Manager at InnovateTech</p>
-                                <div class="result-match">
-                                    <span class="match-tag">92% Match</span>
-                                    <span class="match-reason">Google Cloud experience + AI project focus</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="result-details">
-                            <p><strong>Experience:</strong> 3 years at Google Cloud, 2 years at InnovateTech</p>
-                            <p><strong>Skills:</strong> Product Development, AI Integration, Market Analysis</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="result-refine">
-                    <p>Refine your search:</p>
-                    <div class="refine-options">
-                        <button class="refine-button">Only Senior Level</button>
-                        <button class="refine-button">Only in San Francisco</button>
-                        <button class="refine-button">Add Startup Experience</button>
-                    </div>
-                </div>
             `;
-        } else if (query.toLowerCase().includes('developer') || query.toLowerCase().includes('engineer')) {
-            results = `
-                <div class="result-header">
-                    <h3>Search Results for: "${query}"</h3>
-                    <p>Found 3 relevant professionals</p>
-                </div>
-                <div class="result-list">
+
+             filteredProfiles.forEach(profile => {
+                 resultsHTML += `
                     <div class="result-item">
                         <div class="result-profile">
                             <div class="result-avatar"></div>
                             <div class="result-info">
-                                <h4>Jason Lee</h4>
-                                <p>Senior Software Engineer at TechGiant</p>
+                                <h4>${profile.name}</h4>
+                                <p>${profile.title} at ${profile.company}</p>
                                 <div class="result-match">
-                                    <span class="match-tag">97% Match</span>
-                                    <span class="match-reason">Full-stack expertise + 7 years experience</span>
+                                    <span class="match-tag">${profile.match}% Match</span>
+                                    <span class="match-reason">${profile.reason}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="result-details">
-                            <p><strong>Experience:</strong> 4 years at CodeCorp, 3 years at TechGiant</p>
-                            <p><strong>Skills:</strong> React, Node.js, Python, AWS, Machine Learning</p>
+                            <p><strong>Experience:</strong> ${profile.exp}</p>
+                            <p><strong>Skills:</strong> ${profile.skills}</p>
                         </div>
                     </div>
-                    <div class="result-item">
-                        <div class="result-profile">
-                            <div class="result-avatar"></div>
-                            <div class="result-info">
-                                <h4>Sophia Garcia</h4>
-                                <p>Lead Developer at StartupX</p>
-                                <div class="result-match">
-                                    <span class="match-tag">94% Match</span>
-                                    <span class="match-reason">Frontend specialist + startup experience</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="result-details">
-                            <p><strong>Experience:</strong> 5 years at WebTech, 2 years at StartupX</p>
-                            <p><strong>Skills:</strong> JavaScript, Vue.js, React, UI/UX, Web Performance</p>
-                        </div>
-                    </div>
-                    <div class="result-item">
-                        <div class="result-profile">
-                            <div class="result-avatar"></div>
-                            <div class="result-info">
-                                <h4>David Wilson</h4>
-                                <p>Backend Engineer at DataSystems</p>
-                                <div class="result-match">
-                                    <span class="match-tag">91% Match</span>
-                                    <span class="match-reason">Database expertise + scalability focus</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="result-details">
-                            <p><strong>Experience:</strong> 6 years at various tech companies</p>
-                            <p><strong>Skills:</strong> Java, Python, SQL, MongoDB, Microservices</p>
-                        </div>
-                    </div>
+                 `;
+             });
+
+            resultsHTML += `
                 </div>
                 <div class="result-refine">
                     <p>Refine your search:</p>
                     <div class="refine-options">
-                        <button class="refine-button">Filter by Language</button>
-                        <button class="refine-button">Only Remote Workers</button>
-                        <button class="refine-button">Add Cloud Experience</button>
+                        <button class="refine-button" data-refine="Only Senior Level">Senior Level</button>
+                        <button class="refine-button" data-refine="Add Startup Experience">Startup Experience</button>
+                        <button class="refine-button" data-refine="Based in San Francisco">In San Francisco</button>
+                        <button class="refine-button" data-refine="With Python skills">Python Skills</button>
                     </div>
                 </div>
             `;
         } else {
-            results = `
+             resultsHTML = `
                 <div class="result-header">
-                    <h3>Search Results for: "${query}"</h3>
-                    <p>Found 2 relevant professionals</p>
+                    <h3>No results found for: "${query}"</h3>
+                    <p>Try adjusting your search terms or use broader keywords.</p>
                 </div>
-                <div class="result-list">
-                    <div class="result-item">
-                        <div class="result-profile">
-                            <div class="result-avatar"></div>
-                            <div class="result-info">
-                                <h4>Taylor Johnson</h4>
-                                <p>Marketing Director at BrandCo</p>
-                                <div class="result-match">
-                                    <span class="match-tag">96% Match</span>
-                                    <span class="match-reason">Industry expertise + leadership skills</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="result-details">
-                            <p><strong>Experience:</strong> 8 years in digital marketing</p>
-                            <p><strong>Skills:</strong> Brand Strategy, Content Marketing, Team Leadership</p>
-                        </div>
-                    </div>
-                    <div class="result-item">
-                        <div class="result-profile">
-                            <div class="result-avatar"></div>
-                            <div class="result-info">
-                                <h4>Jordan Smith</h4>
-                                <p>Data Scientist at AnalyticsPro</p>
-                                <div class="result-match">
-                                    <span class="match-tag">93% Match</span>
-                                    <span class="match-reason">Statistical expertise + industry knowledge</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="result-details">
-                            <p><strong>Experience:</strong> 5 years in data science and analytics</p>
-                            <p><strong>Skills:</strong> Machine Learning, Python, R, Data Visualization</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="result-refine">
-                    <p>Refine your search:</p>
-                    <div class="refine-options">
-                        <button class="refine-button">Specific Industry</button>
-                        <button class="refine-button">Years of Experience</button>
-                        <button class="refine-button">Location Filter</button>
-                    </div>
-                </div>
-            `;
+             `;
         }
-        
-        // Add CSS for the mock results
-        const resultStyles = `
-            <style>
-                .result-header {
-                    margin-bottom: 1.5rem;
-                }
-                
-                .result-header h3 {
-                    font-size: 1.3rem;
-                    margin-bottom: 0.5rem;
-                }
-                
-                .result-list {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1rem;
-                }
-                
-                .result-item {
-                    background-color: white;
-                    border-radius: 8px;
-                    padding: 1rem;
-                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-                }
-                
-                .result-profile {
-                    display: flex;
-                    gap: 1rem;
-                    margin-bottom: 0.5rem;
-                }
-                
-                .result-avatar {
-                    width: 50px;
-                    height: 50px;
-                    border-radius: 50%;
-                    background-color: #e2e8f0;
-                }
-                
-                .result-info h4 {
-                    margin: 0 0 0.2rem;
-                    font-weight: 600;
-                }
-                
-                .result-info p {
-                    margin: 0 0 0.5rem;
-                    color: #718096;
-                    font-size: 0.9rem;
-                }
-                
-                .result-match {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                }
-                
-                .match-tag {
-                    background-color: rgba(52, 101, 255, 0.1);
-                    color: #3465ff;
-                    font-size: 0.8rem;
-                    padding: 0.2rem 0.5rem;
-                    border-radius: 4px;
-                    font-weight: 500;
-                }
-                
-                .match-reason {
-                    font-size: 0.8rem;
-                    color: #718096;
-                }
-                
-                .result-details {
-                    margin-top: 0.5rem;
-                    padding-top: 0.5rem;
-                    border-top: 1px solid #e2e8f0;
-                }
-                
-                .result-details p {
-                    margin: 0.5rem 0;
-                    font-size: 0.9rem;
-                }
-                
-                .result-refine {
-                    margin-top: 1.5rem;
-                    padding-top: 1rem;
-                    border-top: 1px solid #e2e8f0;
-                }
-                
-                .result-refine p {
-                    margin-bottom: 0.5rem;
-                    font-weight: 500;
-                }
-                
-                .refine-options {
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 0.5rem;
-                }
-                
-                .refine-button {
-                    background-color: white;
-                    border: 1px solid #e2e8f0;
-                    border-radius: 4px;
-                    padding: 0.5rem 1rem;
-                    font-size: 0.9rem;
-                    cursor: pointer;
-                    transition: all 0.2s ease;
-                }
-                
-                .refine-button:hover {
-                    background-color: #f7fafc;
-                    border-color: #cbd5e0;
-                }
-            </style>
-        `;
-        
-        searchResults.innerHTML = resultStyles + results;
-        
-        // Add event listeners to refine buttons
-        const refineButtons = document.querySelectorAll('.refine-button');
+
+        searchResults.innerHTML = resultsHTML;
+
+        // Add event listeners to NEWLY created refine buttons
+        const refineButtons = searchResults.querySelectorAll('.refine-button');
         refineButtons.forEach(button => {
             button.addEventListener('click', function() {
-                const originalQuery = demoSearchInput.value;
-                const refinement = button.textContent;
-                demoSearchInput.value = `${originalQuery} (${refinement})`;
-                
-                // Trigger new search
-                demoSearchButton.click();
+                const refinement = this.dataset.refine;
+                // Append refinement to input and trigger search again
+                demoSearchInput.value = `${query} (${refinement})`; // Modify original query
+                performDemoSearch();
             });
         });
     }
-    
-    // Smooth scrolling for anchor links
+
+
+    // --- Smooth Scrolling for Anchor Links ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+
+            // Ignore basic "#" links or links to non-existent elements
+            if (href === '#' || !document.querySelector(href)) return;
+
             e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80, // Offset for fixed header
-                    behavior: 'smooth'
-                });
+            const targetElement = document.querySelector(href);
+            const headerOffset = 70; // Height of fixed header
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+
+            // Close mobile menu if open after clicking a link
+            if (navLinks.classList.contains('active')) {
+                 menuToggle.click(); // Simulate click to close
             }
         });
     });
-    
-    // Form submission handling
+
+    // --- Signup Form Handling & Validation ---
+    const signupForm = document.getElementById('main-signup-form');
+    const signupNameInput = document.getElementById('signup-name');
+    const signupEmailInput = document.getElementById('signup-email');
+    // fileInput and resumeError already defined above
+    const nameError = document.getElementById('name-error');
+    const emailError = document.getElementById('email-error');
     const signupButton = document.getElementById('signup-button');
-    
-    if (signupButton) {
-        signupButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const nameInput = document.getElementById('signup-name');
-            const emailInput = document.getElementById('signup-email');
-            const resumeInput = document.getElementById('resume-upload');
-            
-            let isValid = true;
-            
-            // Simple validation
-            if (!nameInput.value.trim()) {
-                nameInput.style.borderColor = '#e53e3e';
-                isValid = false;
-            } else {
-                nameInput.style.borderColor = '';
-            }
-            
-            if (!emailInput.value.trim() || !isValidEmail(emailInput.value)) {
-                emailInput.style.borderColor = '#e53e3e';
-                isValid = false;
-            } else {
-                emailInput.style.borderColor = '';
-            }
-            
-            if (!resumeInput.files.length) {
-                document.querySelector('.file-label').style.borderColor = '#e53e3e';
-                isValid = false;
-            } else {
-                document.querySelector('.file-label').style.borderColor = '';
-            }
-            
-            if (isValid) {
-                // Simulate form submission with loading state
-                signupButton.textContent = 'Creating Account...';
+    const signupFormContainer = document.getElementById('signup-form-container');
+    const successMessageContainer = document.getElementById('signup-success-message');
+
+
+    if (signupForm) {
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            if (validateSignupForm()) {
+                // Simulate form submission
+                signupButton.textContent = 'Processing...';
                 signupButton.disabled = true;
-                
+
+                // --- Simulate backend processing ---
                 setTimeout(() => {
                     // Show success message
-                    const signupContent = document.querySelector('.signup-content');
-                    signupContent.innerHTML = `
-                        <div class="success-message">
-                            <div class="success-icon">✓</div>
-                            <h2>Account Created Successfully!</h2>
-                            <p>We're analyzing your résumé and building your professional profile.</p>
-                            <p>Check your email for next steps.</p>
-                        </div>
-                        <style>
-                            .success-message {
-                                text-align: center;
-                                padding: 2rem;
-                            }
-                            
-                            .success-icon {
-                                width: 80px;
-                                height: 80px;
-                                background-color: #48bb78;
-                                color: white;
-                                border-radius: 50%;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
-                                font-size: 2.5rem;
-                                margin: 0 auto 2rem;
-                            }
-                            
-                            .success-message h2 {
-                                margin-bottom: 1rem;
-                            }
-                            
-                            .success-message p {
-                                margin-bottom: 0.5rem;
-                                color: #718096;
-                            }
-                        </style>
-                    `;
+                    if (signupFormContainer && successMessageContainer) {
+                         signupFormContainer.style.display = 'none';
+                         successMessageContainer.style.display = 'block';
+                    }
+                    // Optional: Reset form fields or redirect after a delay
+                    // setTimeout(() => {
+                    //     resetSignupForm();
+                    //     signupFormContainer.style.display = 'block';
+                    //     successMessageContainer.style.display = 'none';
+                    // }, 5000);
+
                 }, 2000);
             }
         });
     }
-    
-    function isValidEmail(email) {
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(email.toLowerCase());
-    }
-    
-    // Add style for mobile navigation when active
-    const style = document.createElement('style');
-    style.textContent = `
-        @media (max-width: 768px) {
-            .nav-links.active, .cta-buttons.active {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background-color: white;
-                padding: 1rem;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                z-index: 1000;
-            }
-            
-            .menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-            
-            .menu-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-            
-            .menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
+
+    function validateSignupForm() {
+        let isValid = true;
+        clearErrors();
+
+        // Validate Name
+        if (!signupNameInput.value.trim()) {
+            showError(signupNameInput, nameError, 'Full Name is required.');
+            isValid = false;
+        }
+
+        // Validate Email
+        if (!signupEmailInput.value.trim()) {
+            showError(signupEmailInput, emailError, 'Email Address is required.');
+            isValid = false;
+        } else if (!isValidEmail(signupEmailInput.value)) {
+             showError(signupEmailInput, emailError, 'Please enter a valid Email Address.');
+             isValid = false;
+        }
+
+        // Validate Resume File
+        if (!fileInput.files || fileInput.files.length === 0) {
+             showError(fileLabel, resumeError, 'Please upload your resume.'); // Show error next to label
+             isValid = false;
+        } else {
+            // Optional: Add file type/size validation here
+            const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            if (!allowedTypes.includes(fileInput.files[0].type)) {
+                 showError(fileLabel, resumeError, 'Invalid file type. Please upload PDF, DOC, or DOCX.');
+                 isValid = false;
+            } else if (fileInput.files[0].size > maxSize) {
+                showError(fileLabel, resumeError, 'File size exceeds 5MB limit.');
+                isValid = false;
             }
         }
-    `;
-    document.head.appendChild(style);
-});
+
+        return isValid;
+    }
+
+    function showError(inputElement, errorElement, message) {
+        if (inputElement.tagName === 'LABEL') { // Special handling for file label
+             inputElement.classList.add('invalid');
+        } else {
+             inputElement.classList.add('invalid');
+        }
+        if (errorElement) {
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+    }
+
+    function clearErrors() {
+        const errorMessages = signupForm.querySelectorAll('.error-message');
+        const invalidInputs = signupForm.querySelectorAll('.invalid');
+
+        errorMessages.forEach(msg => {
+            msg.textContent = '';
+            msg.style.display = 'none';
+        });
+        invalidInputs.forEach(input => input.classList.remove('invalid'));
+        fileLabel.classList.remove('invalid'); // Specifically clear file label error state
+    }
+
+    function isValidEmail(email) {
+        // Simple regex for basic email validation
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email.toLowerCase());
+    }
+
+    function resetSignupForm() {
+        signupForm.reset(); // Resets form fields
+        resetFileLabel(); // Resets file input visual state
+        clearErrors();
+        signupButton.textContent = 'Create My AI Profile';
+        signupButton.disabled = false;
+    }
+
+
+    // --- Intersection Observer for Scroll Animations ---
+    const animatedElements = document.querySelectorAll('.feature-card, .step, .testimonial, .pricing-card');
+
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries, observerInstance) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observerInstance.unobserve(entry.target); // Optional: Stop observing once visible
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+    } else {
+        // Fallback for browsers without IntersectionObserver (optional)
+        animatedElements.forEach(el => el.classList.add('visible'));
+    }
+
+
+    // --- Update Footer Year ---
+    const yearSpan = document.getElementById('current-year');
+    if(yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+
+}); // End DOMContentLoaded

@@ -3,316 +3,451 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeepLinked | Redefining Professional Networking</title>
+    <title>DeepLinked | Unlock Your Network's Potential with AI</title>
+    <meta name="description" content="Stop searching, start connecting. DeepLinked uses AI to analyze your resume and find hyper-relevant professional connections effortlessly.">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Ensure you have a valid Font Awesome Kit URL -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- Favicon Placeholder -->
+    <link rel="icon" href="images/favicon.ico">
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="container">
             <div class="logo">
-                <h1>Deep<span>Linked</span></h1>
+                <a href="#"><h1>Deep<span>Linked</span></h1></a>
             </div>
-            <div class="nav-links">
+            <div class="nav-links" id="main-nav">
                 <a href="#features">Features</a>
                 <a href="#how-it-works">How It Works</a>
-                <a href="#testimonials">Testimonials</a>
+                <a href="#demo">Live Demo</a>
                 <a href="#pricing">Pricing</a>
             </div>
             <div class="cta-buttons">
-                <a href="#signup" class="btn btn-secondary">Log In</a>
-                <a href="#signup" class="btn btn-primary">Sign Up</a>
+                <a href="#login-modal" class="btn btn-secondary">Log In</a> <!-- Consider making this a modal trigger -->
+                <a href="#signup" class="btn btn-primary">Get Started Free</a>
             </div>
-            <div class="menu-toggle">
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-controls="main-nav" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>AI-Powered Networking.</h1>
-                <h2>Minimal effort. Maximum connections.</h2>
-                <p>Upload your résumé once, connect instantly with our revolutionary AI search technology.</p>
-                <div class="hero-cta">
-                    <a href="#signup" class="btn btn-primary btn-large">Get Started</a>
-                    <a href="#demo" class="btn btn-outline">Watch Demo</a>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Unlock Your<br><span class="highlight">Network's True Potential.</span></h1>
+                    <h2>Minimal effort. Maximum connections.</h2>
+                    <p>Tired of endless scrolling? Upload your resume, and let DeepLinked's AI instantly build your profile and find hyper-relevant connections you'd otherwise miss.</p>
+                    <div class="hero-cta">
+                        <a href="#signup" class="btn btn-primary btn-large">Unlock Your Network</a>
+                        <a href="#demo" class="btn btn-outline btn-large">See AI Search in Action <i class="fas fa-play-circle"></i></a>
+                    </div>
+                     <div class="trust-elements">
+                         <p>Trusted by professionals at leading companies:</p>
+                         <!-- Replace with actual logos if possible -->
+                         <img src="images/logo-placeholder-1.svg" alt="Example Company Logo 1" title="Innovate Corp">
+                         <img src="images/logo-placeholder-2.svg" alt="Example Company Logo 2" title="Tech Solutions">
+                         <img src="images/logo-placeholder-3.svg" alt="Example Company Logo 3" title="Global Connect">
+                     </div>
                 </div>
-            </div>
-            <div class="hero-image">
-                <img src="images/hero-illustration.svg" alt="AI-powered networking illustration">
-            </div>
-        </div>
-    </section>
+                <div class="hero-image">
+                    <!-- IMPORTANT: Replace this img tag's src with your ACTUAL ANIMATED SVG file -->
+                    <img src="images/hero-illustration-animated.svg" alt="Animated illustration of AI analyzing resume and building network connections">
 
-    <section class="product-gallery">
-        <div class="container">
-            <div class="gallery-item active">
-                <h2>Resume to Profile in Seconds</h2>
-                <p>Advanced AI extracts all relevant data from your résumé instantly.</p>
-                <img src="images/feature-1.svg" alt="Resume extraction feature">
+                    <!-- START: Original Static SVG Code (Keep for reference, but use an animated version above) -->
+                    <!--
+                    <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#f5f5f7" stop-opacity="0.5"/>
+                          <stop offset="100%" stop-color="#e6ecf7" stop-opacity="0.5"/>
+                        </linearGradient>
+                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="#0066cc" stop-opacity="0.8"/>
+                          <stop offset="100%" stop-color="#0055a5" stop-opacity="0.8"/>
+                        </linearGradient>
+                        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="#00e0c6" stop-opacity="0.8"/>
+                          <stop offset="100%" stop-color="#00c2e0" stop-opacity="0.8"/>
+                        </linearGradient>
+                      </defs>
+                      <rect x="50" y="50" width="700" height="500" rx="30" fill="url(#grad1)" />
+                      <rect x="100" y="150" width="250" height="300" rx="20" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+                      <rect x="120" y="180" width="210" height="20" rx="4" fill="#e2e8f0"/>
+                      <rect x="120" y="220" width="180" height="15" rx="4" fill="#e2e8f0"/>
+                      <rect x="120" y="245" width="210" height="15" rx="4" fill="#e2e8f0"/>
+                      <rect x="120" y="270" width="160" height="15" rx="4" fill="#e2e8f0"/>
+                      <rect x="120" y="310" width="210" height="15" rx="4" fill="#e2e8f0"/>
+                      <rect x="120" y="335" width="180" height="15" rx="4" fill="#e2e8f0"/>
+                      <rect x="120" y="360" width="200" height="15" rx="4" fill="#e2e8f0"/>
+                      <rect x="120" y="400" width="120" height="15" rx="4" fill="#e2e8f0"/>
+                      <rect x="120" y="425" width="150" height="15" rx="4" fill="#e2e8f0"/>
+                      <path d="M360 250 C420 250, 420 250, 440 300" stroke="#0066cc" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
+                      <path d="M360 320 C420 320, 420 350, 440 350" stroke="#0066cc" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
+                      <path d="M360 400 C420 400, 420 380, 440 400" stroke="#0066cc" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
+                      <circle cx="500" cy="300" r="150" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+                      <circle cx="500" cy="300" r="20" fill="url(#grad2)"/>
+                      <circle cx="580" cy="250" r="15" fill="url(#grad2)"/>
+                      <circle cx="420" cy="350" r="15" fill="url(#grad2)"/>
+                      <circle cx="550" cy="380" r="15" fill="url(#grad2)"/>
+                      <circle cx="450" cy="250" r="15" fill="url(#grad2)"/>
+                      <circle cx="600" cy="330" r="15" fill="url(#grad3)"/>
+                      <circle cx="470" cy="400" r="15" fill="url(#grad3)"/>
+                      <circle cx="410" cy="270" r="15" fill="url(#grad3)"/>
+                      <line x1="500" y1="300" x2="580" y2="250" stroke="#0066cc" stroke-width="2" stroke-opacity="0.6"/>
+                      <line x1="500" y1="300" x2="420" y2="350" stroke="#0066cc" stroke-width="2" stroke-opacity="0.6"/>
+                      <line x1="500" y1="300" x2="550" y2="380" stroke="#0066cc" stroke-width="2" stroke-opacity="0.6"/>
+                      <line x1="500" y1="300" x2="450" y2="250" stroke="#0066cc" stroke-width="2" stroke-opacity="0.6"/>
+                      <line x1="500" y1="300" x2="600" y2="330" stroke="#00e0c6" stroke-width="2" stroke-opacity="0.6"/>
+                      <line x1="500" y1="300" x2="470" y2="400" stroke="#00e0c6" stroke-width="2" stroke-opacity="0.6"/>
+                      <line x1="500" y1="300" x2="410" y2="270" stroke="#00e0c6" stroke-width="2" stroke-opacity="0.6"/>
+                      <line x1="580" y1="250" x2="600" y2="330" stroke="#cccccc" stroke-width="1.5" stroke-opacity="0.5"/>
+                      <line x1="420" y1="350" x2="470" y2="400" stroke="#cccccc" stroke-width="1.5" stroke-opacity="0.5"/>
+                      <line x1="450" y1="250" x2="410" y2="270" stroke="#cccccc" stroke-width="1.5" stroke-opacity="0.5"/>
+                      <line x1="550" y1="380" x2="470" y2="400" stroke="#cccccc" stroke-width="1.5" stroke-opacity="0.5"/>
+                      <rect x="620" y="150" width="130" height="40" rx="20" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+                      <text x="635" y="175" font-family="SF Pro Display" font-size="12" fill="#86868b">Search query...</text>
+                      <rect x="600" y="210" width="150" height="30" rx="15" fill="#f5f5f7" stroke="#e2e8f0" stroke-width="1"/>
+                      <text x="615" y="230" font-family="SF Pro Display" font-size="10" fill="#86868b">Filter results</text>
+                      <rect x="600" y="250" width="150" height="30" rx="15" fill="#f5f5f7" stroke="#e2e8f0" stroke-width="1"/>
+                      <text x="615" y="270" font-family="SF Pro Display" font-size="10" fill="#86868b">Refine search</text>
+                      <rect x="600" y="300" width="150" height="50" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+                      <circle cx="620" cy="325" r="10" fill="#e2e8f0"/>
+                      <rect x="640" y="315" width="90" height="8" rx="4" fill="#e2e8f0"/>
+                      <rect x="640" y="330" width="70" height="6" rx="3" fill="#e2e8f0"/>
+                      <rect x="600" y="360" width="150" height="50" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+                      <circle cx="620" cy="385" r="10" fill="#e2e8f0"/>
+                      <rect x="640" y="375" width="90" height="8" rx="4" fill="#e2e8f0"/>
+                      <rect x="640" y="390" width="70" height="6" rx="3" fill="#e2e8f0"/>
+                      <rect x="600" y="420" width="150" height="50" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+                      <circle cx="620" cy="445" r="10" fill="#e2e8f0"/>
+                      <rect x="640" y="435" width="90" height="8" rx="4" fill="#e2e8f0"/>
+                      <rect x="640" y="450" width="70" height="6" rx="3" fill="#e2e8f0"/>
+                      <circle cx="400" cy="80" r="10" fill="url(#grad2)" opacity="0.6">
+                        <animate attributeName="cx" values="400;450;500;550;600;650;700" dur="3s" repeatCount="indefinite" />
+                        <animate attributeName="cy" values="80;100;90;100;90;100;80" dur="3s" repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s" repeatCount="indefinite" />
+                      </circle>
+                      <circle cx="130" cy="100" r="8" fill="url(#grad3)" opacity="0.6">
+                        <animate attributeName="cx" values="130;180;230;280;330;380" dur="4s" repeatCount="indefinite" />
+                        <animate attributeName="cy" values="100;120;110;120;110;100" dur="4s" repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="0.6;0.9;0.6" dur="4s" repeatCount="indefinite" />
+                      </circle>
+                      <circle cx="700" cy="500" r="12" fill="url(#grad2)" opacity="0.4">
+                        <animate attributeName="cx" values="700;650;600;550;500;450;400" dur="5s" repeatCount="indefinite" />
+                        <animate attributeName="cy" values="500;520;510;520;510;520;500" dur="5s" repeatCount="indefinite" />
+                        <animate attributeName="opacity" values="0.4;0.7;0.4" dur="5s" repeatCount="indefinite" />
+                      </circle>
+                    </svg>
+                    -->
+                    <!-- END: Original Static SVG Code -->
+                </div>
             </div>
-            <div class="gallery-item">
-                <h2>Conversational Search</h2>
-                <p>Ask questions naturally and refine searches on the fly.</p>
-                <img src="images/feature-2.svg" alt="Conversational search feature">
-            </div>
-            <div class="gallery-item">
-                <h2>Intelligent Connections</h2>
-                <p>Discover non-obvious, valuable connections based on career trajectories.</p>
-                <img src="images/feature-3.svg" alt="Intelligent connections feature">
-            </div>
-            <div class="gallery-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="features" class="features">
-        <div class="container">
-            <h2>Why DeepLinked?</h2>
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-file-upload"></i>
+        <section class="product-gallery">
+            <div class="container">
+                <div class="gallery-carousel" aria-live="polite">
+                    <div class="gallery-item active">
+                        <h2>Instant Profile, Zero Effort</h2>
+                        <p>Drag, drop, done. Our AI reads your resume, understands your career, and builds a rich profile in seconds.</p>
+                        <img src="images/feature-1.svg" alt="Illustration showing resume transforming into a profile">
                     </div>
-                    <h3>One-Time Resume Upload</h3>
-                    <p>Our AI extracts all relevant data from your résumé instantly.</p>
+                    <div class="gallery-item">
+                        <h2>Ask Anything, Find Anyone</h2>
+                        <p>Natural language search that thinks like you do. Find experts, collaborators, or mentors with conversational queries.</p>
+                        <img src="images/feature-2.svg" alt="Illustration of conversational search bubbles leading to connections">
+                    </div>
+                    <div class="gallery-item">
+                        <h2>Beyond Keywords: True Compatibility</h2>
+                        <p>We analyze career paths, skills evolution, and project overlaps to find connections based on genuine potential.</p>
+                        <img src="images/feature-3.svg" alt="Illustration showing complex network connections based on deep analysis">
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3>Conversational Search</h3>
-                    <p>Ask questions naturally and refine searches on the fly.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Lightning-Fast Results</h3>
-                    <p>Get precise matches in milliseconds with our optimized search algorithms.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Intelligent Connections</h3>
-                    <p>Discover non-obvious, valuable connections based on career trajectories.</p>
+                <div class="gallery-dots">
+                    <button class="dot active" aria-label="Show feature 1"></button>
+                    <button class="dot" aria-label="Show feature 2"></button>
+                    <button class="dot" aria-label="Show feature 3"></button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="how-it-works" class="how-it-works">
-        <div class="container">
-            <h2>How It Works</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Upload Your Résumé</h3>
-                        <p>Our AI instantly extracts and structures your professional data, creating a rich profile.</p>
+        <section id="features" class="features">
+            <div class="container">
+                <h2>The Smarter Way to Network</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-upload"></i>
+                        </div>
+                        <h3>Instant Profile Creation</h3>
+                        <p>Skip the forms. Upload your resume, and our AI extracts, structures, and enriches your professional data automatically.</p>
                     </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Ask Any Question</h3>
-                        <p>Use natural language to find the exact professionals you're looking for.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Intuitive AI Search</h3>
+                        <p>Ask questions in plain language. Refine results through conversation, just like talking to a research assistant.</p>
                     </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Refine Your Search</h3>
-                        <p>Have a conversation with our AI to narrow down results and find perfect matches.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Relevant Results, Instantly</h3>
+                        <p>Our optimized algorithms deliver highly relevant connections in milliseconds, saving you hours of manual searching.</p>
                     </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Connect & Collaborate</h3>
-                        <p>Reach out to matches with relevant context already established.</p>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Discover Hidden Opportunities</h3>
+                        <p>Uncover non-obvious connections based on deep analysis of career trajectories, skill adjacencies, and potential compatibility.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="demo-search">
-        <div class="container">
-            <div class="demo-interface">
-                <div class="search-header">
-                    <h2>Experience AI-Powered Search</h2>
-                    <p>Try a sample query to see how our platform works</p>
-                </div>
-                <div class="search-box">
-                    <input type="text" id="demo-search-input" placeholder="E.g., 'Find product managers who worked at Google and have AI experience'">
-                    <button id="demo-search-button" class="btn btn-primary">Search</button>
-                </div>
-                <div class="search-results" id="search-results">
-                    <!-- Results will be dynamically populated -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2>What People Are Saying</h2>
-            <div class="testimonial-slider">
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"I found three perfect collaborators for my startup in under five minutes. The conversational search is like having a professional matchmaker at your fingertips."</p>
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <h2>Get Connected in 4 Simple Steps</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Upload & Analyze</h3>
+                            <p>Securely upload your resume. Our AI instantly parses and understands your experience, skills, and career path.</p>
+                        </div>
                     </div>
-                    <div class="testimonial-author">
-                        <img src="images/testimonial-1.jpg" alt="Sarah Johnson">
-                        <div>
-                            <h4>Sarah Johnson</h4>
-                            <p>Founder, TechBridge</p>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Search Naturally</h3>
+                            <p>Use conversational language to describe who you're looking for. "Find engineers with fintech experience who worked at startups."</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Refine with AI Chat</h3>
+                            <p>Interact with the results. Ask follow-up questions like "Only show those in New York" or "Prioritize machine learning skills."</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Connect with Context</h3>
+                            <p>Reach out to ideal matches, armed with relevant insights provided by the AI about why they are a strong connection.</p>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"The pattern recognition is uncanny. DeepLinked suggested connections that weren't obvious at first but turned out to be exactly what I needed for my research project."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="images/testimonial-2.jpg" alt="Marcus Chen">
-                        <div>
-                            <h4>Dr. Marcus Chen</h4>
-                            <p>Research Lead, BioInnovate</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"As a recruiter, I've cut my search time by 75%. The ability to have a conversation with the search engine and refine as I go is revolutionary."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="images/testimonial-3.jpg" alt="Priya Sharma">
-                        <div>
-                            <h4>Priya Sharma</h4>
-                            <p>Senior Recruiter, InnovateTech</p>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="testimonial-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <h2>Simple, Transparent Pricing</h2>
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Basic</h3>
-                        <div class="price">
-                            <span class="currency">$</span>
-                            <span class="amount">0</span>
-                            <span class="period">/month</span>
-                        </div>
+        <section id="demo" class="demo-search">
+            <div class="container">
+                <div class="demo-interface">
+                    <div class="search-header">
+                        <h2>Experience AI-Powered Search</h2>
+                        <p>Try a sample query below to see how DeepLinked finds relevant connections.</p>
                     </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li>Upload your résumé</li>
-                            <li>10 AI searches per month</li>
-                            <li>Basic profile insights</li>
-                            <li>Connect with up to 20 professionals</li>
-                        </ul>
+                    <div class="search-box">
+                        <input type="text" id="demo-search-input" placeholder="E.g., 'Find product managers who worked at Google and have AI experience'" aria-label="Demo search input">
+                        <button id="demo-search-button" class="btn btn-primary">Search AI Network</button>
                     </div>
-                    <div class="pricing-cta">
-                        <a href="#signup" class="btn btn-outline">Get Started</a>
-                    </div>
-                </div>
-                <div class="pricing-card featured">
-                    <div class="pricing-header">
-                        <h3>Professional</h3>
-                        <div class="price">
-                            <span class="currency">$</span>
-                            <span class="amount">19</span>
-                            <span class="period">/month</span>
-                        </div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li>All Basic features, plus:</li>
-                            <li>Unlimited AI searches</li>
-                            <li>Advanced profile insights</li>
-                            <li>Unlimited connections</li>
-                            <li>Custom search filters</li>
-                            <li>Priority profile ranking</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-cta">
-                        <a href="#signup" class="btn btn-primary">Get Started</a>
-                    </div>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Enterprise</h3>
-                        <div class="price">
-                            <span class="custom">Custom Pricing</span>
-                        </div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li>All Professional features, plus:</li>
-                            <li>Dedicated account management</li>
-                            <li>Custom API integrations</li>
-                            <li>Team collaboration tools</li>
-                            <li>Advanced analytics</li>
-                            <li>Bulk résumé processing</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-cta">
-                        <a href="#contact" class="btn btn-outline">Contact Sales</a>
+                    <div class="search-results" id="search-results" aria-live="polite">
+                        <p class="search-placeholder">Enter a query like the examples above to see AI search in action.</p>
+                        <!-- Dynamic Results Appear Here -->
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="signup" class="signup">
-        <div class="container">
-            <div class="signup-content">
-                <h2>Ready to Transform Your Professional Network?</h2>
-                <p>Get started with just your résumé. No tedious forms, no wasted time.</p>
-                <div class="signup-form">
-                    <div class="form-group">
-                        <input type="text" id="signup-name" placeholder="Full Name">
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2>Don't Just Take Our Word For It</h2>
+                <div class="testimonial-slider" aria-roledescription="carousel" aria-label="Testimonials">
+                     <div class="testimonial-slide active">
+                         <div class="testimonial">
+                             <div class="testimonial-content">
+                                 <p>"<strong>Found 3 collaborators in 5 minutes.</strong> I found three perfect collaborators for my startup in under five minutes. The conversational search is like having a professional matchmaker at your fingertips."</p>
+                             </div>
+                             <div class="testimonial-author">
+                                 <img src="images/testimonial-1.jpg" alt="Headshot of Sarah Johnson">
+                                 <div class="author-info">
+                                     <h4>Sarah Johnson</h4>
+                                     <p>Founder, TechBridge <img src="images/logo-techbridge.svg" alt="TechBridge logo" class="company-logo"></p>
+                                 </div>
+                             </div>
+                         </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" id="signup-email" placeholder="Email Address">
+                     <div class="testimonial-slide">
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"<strong>Uncanny pattern recognition.</strong> The pattern recognition is uncanny. DeepLinked suggested connections that weren't obvious at first but turned out to be exactly what I needed for my research project."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="images/testimonial-2.jpg" alt="Headshot of Dr. Marcus Chen">
+                                 <div class="author-info">
+                                    <h4>Dr. Marcus Chen</h4>
+                                    <p>Research Lead, BioInnovate <img src="images/logo-bioinnovate.svg" alt="BioInnovate logo" class="company-logo"></p>
+                                 </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group file-upload">
-                        <label for="resume-upload" class="file-label">
-                            <span class="file-text">Upload Your Résumé</span>
-                            <span class="file-button">Choose File</span>
-                        </label>
-                        <input type="file" id="resume-upload" accept=".pdf,.doc,.docx">
+                     <div class="testimonial-slide">
+                        <div class="testimonial">
+                            <div class="testimonial-content">
+                                <p>"<strong>Cut search time by 75%.</strong> As a recruiter, I've cut my search time by 75%. The ability to have a conversation with the search engine and refine as I go is revolutionary."</p>
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="images/testimonial-3.jpg" alt="Headshot of Priya Sharma">
+                                 <div class="author-info">
+                                    <h4>Priya Sharma</h4>
+                                    <p>Senior Recruiter, InnovateTech <img src="images/logo-innovatetech.svg" alt="InnovateTech logo" class="company-logo"></p>
+                                 </div>
+                            </div>
+                        </div>
                     </div>
-                    <button id="signup-button" class="btn btn-primary btn-large">Create My Account</button>
                 </div>
-                <p class="terms">By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+                <div class="testimonial-dots">
+                    <button class="dot active" aria-label="Show testimonial 1"></button>
+                    <button class="dot" aria-label="Show testimonial 2"></button>
+                    <button class="dot" aria-label="Show testimonial 3"></button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section id="pricing" class="pricing">
+            <div class="container">
+                <h2>Simple, Transparent Pricing</h2>
+                <p class="pricing-subtitle">Choose the plan that fits your networking needs. Start free!</p>
+                <div class="pricing-cards">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Basic</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount">0</span>
+                                <span class="period">Forever</span>
+                            </div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Upload & AI profile creation</li>
+                                <li><i class="fas fa-check"></i> 10 AI searches / month</li>
+                                <li><i class="fas fa-check"></i> Basic connection insights</li>
+                                <li><i class="fas fa-check"></i> Connect with up to 20 professionals / month</li>
+                                <li><i class="fas fa-times"></i> Advanced search filters</li>
+                                <li><i class="fas fa-times"></i> Priority profile visibility</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-cta">
+                            <a href="#signup" class="btn btn-outline">Get Started Free</a>
+                        </div>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="featured-badge">Most Popular</div>
+                        <div class="pricing-header">
+                            <h3>Professional</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount">19</span>
+                                <span class="period">/month</span>
+                            </div>
+                        </div>
+                        <div class="pricing-features">
+                             <ul>
+                                <li><i class="fas fa-check"></i> All Basic features, plus:</li>
+                                <li><i class="fas fa-check"></i> Unlimited AI searches</li>
+                                <li><i class="fas fa-check"></i> Advanced connection insights & patterns</li>
+                                <li><i class="fas fa-check"></i> Unlimited connections</li>
+                                <li><i class="fas fa-check"></i> Advanced search filters (industry, company size, etc.)</li>
+                                <li><i class="fas fa-check"></i> Priority profile visibility in search</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-cta">
+                            <a href="#signup?plan=professional" class="btn btn-primary">Choose Professional</a>
+                        </div>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Enterprise</h3>
+                            <div class="price">
+                                <span class="custom">Let's Talk</span>
+                            </div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i class="fas fa-check"></i> All Professional features, plus:</li>
+                                <li><i class="fas fa-check"></i> Team accounts & collaboration</li>
+                                <li><i class="fas fa-check"></i> Dedicated account manager</li>
+                                <li><i class="fas fa-check"></i> Custom API access & integrations</li>
+                                <li><i class="fas fa-check"></i> Advanced analytics dashboard</li>
+                                <li><i class="fas fa-check"></i> Bulk resume processing options</li>
+                                <li><i class="fas fa-check"></i> Priority support</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-cta">
+                            <a href="#contact-sales" class="btn btn-outline">Contact Sales</a> <!-- Link to a contact form/modal -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="signup" class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div id="signup-form-container">
+                        <h2>Ready to Revolutionize Your Networking?</h2>
+                        <p>Get started in seconds. Upload your resume – our AI handles the profile creation.</p>
+                        <form class="signup-form" id="main-signup-form">
+                             <div class="form-group">
+                                <label for="signup-name" class="sr-only">Full Name</label>
+                                <input type="text" id="signup-name" placeholder="Full Name" required aria-required="true">
+                                <div class="error-message" id="name-error"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-email" class="sr-only">Email Address</label>
+                                <input type="email" id="signup-email" placeholder="Email Address" required aria-required="true">
+                                 <div class="error-message" id="email-error"></div>
+                            </div>
+                            <div class="form-group file-upload-wrapper">
+                                <input type="file" id="resume-upload" accept=".pdf,.doc,.docx" required aria-required="true" aria-label="Upload your resume">
+                                <label for="resume-upload" class="file-label" id="resume-label">
+                                    <div class="file-label-content" id="file-label-default">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span class="file-text">Drag & Drop Resume or Click to Upload</span>
+                                        <span class="file-types">(.pdf, .docx accepted)</span>
+                                    </div>
+                                    <span class="file-name-display" id="file-name-display"></span>
+                                </label>
+                                 <div class="error-message" id="resume-error"></div>
+                            </div>
+                            <button type="submit" id="signup-button" class="btn btn-primary btn-large">Create My AI Profile</button>
+                        </form>
+                        <p class="security-note"><i class="fas fa-lock"></i> Your data is processed securely and kept private.</p>
+                        <p class="terms">By signing up, you agree to our <a href="/terms" target="_blank">Terms of Service</a> and <a href="/privacy" target="_blank">Privacy Policy</a>.</p>
+                    </div>
+                     <div id="signup-success-message" class="success-message" style="display: none;">
+                         <div class="success-icon">✓</div>
+                         <h2>Account Creation Initiated!</h2>
+                         <p>Success! We're analyzing your résumé and building your intelligent profile.</p>
+                         <p>Keep an eye on your inbox for next steps.</p>
+                     </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
@@ -323,20 +458,20 @@
                     </div>
                     <p>Redefining professional networking with AI-powered search and connections.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="DeepLinked on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="DeepLinked on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="DeepLinked on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <!-- Add relevant social links only -->
                     </div>
                 </div>
                 <div class="footer-column">
-                    <h3>Features</h3>
+                    <h3>Product</h3>
                     <ul>
-                        <li><a href="#">AI Search</a></li>
-                        <li><a href="#">Profile Creation</a></li>
-                        <li><a href="#">Career Insights</a></li>
-                        <li><a href="#">Pattern Matching</a></li>
-                        <li><a href="#">Semantic Networking</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How it Works</a></li>
+                        <li><a href="#demo">AI Search Demo</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#">Security</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -345,23 +480,24 @@
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Help Center</a></li>
                         <li><a href="#">API Documentation</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                         <li><a href="#">Community</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Company</h3>
                     <ul>
                         <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Status</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 DeepLinked. All rights reserved.</p>
+                <p>© <span id="current-year"></span> DeepLinked AI, Inc. All rights reserved.</p>
             </div>
         </div>
     </footer>
