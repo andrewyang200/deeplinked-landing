@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepLinked | Redefining Professional Networking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Deep<span>Linked</span></h1>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#pricing">Pricing</a>
+            </div>
+            <div class="cta-buttons">
+                <a href="#signup" class="btn btn-secondary">Log In</a>
+                <a href="#signup" class="btn btn-primary">Sign Up</a>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>AI-Powered Networking for the Modern Professional</h1>
+                <p>Discover meaningful connections in seconds with our revolutionary AI search technology. Upload your résumé once, connect instantly.</p>
+                <div class="hero-cta">
+                    <a href="#signup" class="btn btn-primary btn-large">Get Started</a>
+                    <a href="#demo" class="btn btn-outline">See Demo</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero-illustration.svg" alt="AI-powered networking illustration">
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why DeepLinked?</h2>
+                <p>Our platform eliminates the barriers of traditional networking, powered by cutting-edge AI technology.</p>
+            </div>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h3>One-Time Resume Upload</h3>
+                    <p>No more tedious form filling. Our AI extracts all relevant data from your résumé instantly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Conversational Search</h3>
+                    <p>Ask questions naturally and refine searches on the fly, just like chatting with a knowledgeable assistant.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning-Fast Results</h3>
+                    <p>Get precise matches in milliseconds, not minutes, with our optimized search algorithms.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Intelligent Connections</h3>
+                    <p>Discover non-obvious, valuable connections based on career trajectories and skill patterns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Experience the simplicity and power of AI-driven networking</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Upload Your Résumé</h3>
+                        <p>Our AI instantly extracts and structures your professional data, creating a rich profile.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Ask Any Question</h3>
+                        <p>Use natural language to find the exact professionals you're looking for.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Refine Your Search</h3>
+                        <p>Have a conversation with our AI to narrow down results and find perfect matches.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Connect & Collaborate</h3>
+                        <p>Reach out to matches with relevant context already established.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="demo-search">
+        <div class="container">
+            <div class="demo-interface">
+                <div class="search-header">
+                    <h2>Experience AI-Powered Search</h2>
+                    <p>Try a sample query to see how our platform works</p>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="demo-search-input" placeholder="E.g., 'Find product managers who worked at Google and have AI experience'">
+                    <button id="demo-search-button" class="btn btn-primary">Search</button>
+                </div>
+                <div class="search-results" id="search-results">
+                    <!-- Results will be dynamically populated -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What People Are Saying</h2>
+                <p>Early adopters are already experiencing the power of AI-driven networking</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"I found three perfect collaborators for my startup in under five minutes. The conversational search is like having a professional matchmaker at your fingertips."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="images/testimonial-1.jpg" alt="Sarah Johnson">
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <p>Founder, TechBridge</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The pattern recognition is uncanny. ProNetAI suggested connections that weren't obvious at first but turned out to be exactly what I needed for my research project."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="images/testimonial-2.jpg" alt="Marcus Chen">
+                        <div>
+                            <h4>Dr. Marcus Chen</h4>
+                            <p>Research Lead, BioInnovate</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"As a recruiter, I've cut my search time by 75%. The ability to have a conversation with the search engine and refine as I go is revolutionary."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="images/testimonial-3.jpg" alt="Priya Sharma">
+                        <div>
+                            <h4>Priya Sharma</h4>
+                            <p>Senior Recruiter, InnovateTech</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Choose the plan that fits your networking needs</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">0</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Upload your résumé</li>
+                            <li>10 AI searches per month</li>
+                            <li>Basic profile insights</li>
+                            <li>Connect with up to 20 professionals</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="#signup" class="btn btn-outline">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">19</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>All Basic features, plus:</li>
+                            <li>Unlimited AI searches</li>
+                            <li>Advanced profile insights</li>
+                            <li>Unlimited connections</li>
+                            <li>Custom search filters</li>
+                            <li>Priority profile ranking</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="#signup" class="btn btn-primary">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <div class="price">
+                            <span class="custom">Custom Pricing</span>
+                        </div>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>All Professional features, plus:</li>
+                            <li>Dedicated account management</li>
+                            <li>Custom API integrations</li>
+                            <li>Team collaboration tools</li>
+                            <li>Advanced analytics</li>
+                            <li>Bulk résumé processing</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="#contact" class="btn btn-outline">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="signup" class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <h2>Ready to Transform Your Professional Network?</h2>
+                <p>Get started with just your résumé. No tedious forms, no wasted time.</p>
+                <div class="signup-form">
+                    <div class="form-group">
+                        <input type="text" id="signup-name" placeholder="Full Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="signup-email" placeholder="Email Address">
+                    </div>
+                    <div class="form-group file-upload">
+                        <label for="resume-upload" class="file-label">
+                            <span class="file-text">Upload Your Résumé</span>
+                            <span class="file-button">Choose File</span>
+                        </label>
+                        <input type="file" id="resume-upload" accept=".pdf,.doc,.docx">
+                    </div>
+                    <button id="signup-button" class="btn btn-primary btn-large">Create My Account</button>
+                </div>
+                <p class="terms">By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <h2>Deep<span>Linked</span></h2>
+                    </div>
+                    <p>Redefining professional networking with AI-powered search and connections.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Features</h3>
+                    <ul>
+                        <li><a href="#">AI Search</a></li>
+                        <li><a href="#">Profile Creation</a></li>
+                        <li><a href="#">Career Insights</a></li>
+                        <li><a href="#">Pattern Matching</a></li>
+                        <li><a href="#">Semantic Networking</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Status</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 DeepLinked. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
