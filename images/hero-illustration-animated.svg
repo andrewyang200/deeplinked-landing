@@ -1,78 +1,110 @@
-<!-- FILENAME: hero-illustration-animated.svg (STATIC VERSION - NEEDS ANIMATION) -->
-<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" font-family="SF Pro Display, sans-serif">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background elements -->
   <defs>
-    <linearGradient id="hero-grad-blue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0066cc"/>
-      <stop offset="100%" stop-color="#004c99"/>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5f5f7" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#e6ecf7" stop-opacity="0.5"/>
     </linearGradient>
-    <linearGradient id="hero-grad-accent" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00e0c6"/>
-      <stop offset="100%" stop-color="#00b3a1"/>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0066cc" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0055a5" stop-opacity="0.8"/>
     </linearGradient>
-     <filter id="drop-shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-      <feOffset dx="2" dy="3" result="offsetblur"/>
-      <feComponentTransfer>
-        <feFuncA type="linear" slope="0.2"/>
-      </feComponentTransfer>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00e0c6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00c2e0" stop-opacity="0.8"/>
+    </linearGradient>
   </defs>
 
-  <!-- Background elements (subtle) -->
-  <circle cx="100" cy="100" r="150" fill="#f5f5f7" opacity="0.5"/>
-  <circle cx="700" cy="500" r="200" fill="#eaf3ff" opacity="0.4"/>
+  <!-- Background shape -->
+  <rect x="50" y="50" width="700" height="500" rx="30" fill="url(#grad1)" />
 
-  <!-- Simplified Resume -->
-  <g transform="translate(80, 150)" filter="url(#drop-shadow)">
-      <rect x="0" y="0" width="280" height="350" rx="20" fill="white" stroke="#e0e0e0" stroke-width="1"/>
-      <rect x="20" y="30" width="240" height="25" rx="5" fill="#e8e8ed"/>
-      <rect x="20" y="75" width="200" height="15" rx="4" fill="#f0f0f0"/>
-      <rect x="20" y="100" width="240" height="15" rx="4" fill="#f0f0f0"/>
-      <rect x="20" y="125" width="180" height="15" rx="4" fill="#f0f0f0"/>
-      <rect x="20" y="160" width="240" height="15" rx="4" fill="#f0f0f0"/>
-      <rect x="20" y="185" width="210" height="15" rx="4" fill="#f0f0f0"/>
-      <rect x="20" y="220" width="240" height="15" rx="4" fill="#f0f0f0"/>
-      <rect x="20" y="245" width="150" height="15" rx="4" fill="#f0f0f0"/>
-      <rect x="20" y="280" width="240" height="15" rx="4" fill="#f0f0f0"/>
-      <rect x="20" y="305" width="190" height="15" rx="4" fill="#f0f0f0"/>
-  </g>
+  <!-- Resume document -->
+  <rect x="100" y="150" width="250" height="300" rx="20" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+  <rect x="120" y="180" width="210" height="20" rx="4" fill="#e2e8f0"/>
+  <rect x="120" y="220" width="180" height="15" rx="4" fill="#e2e8f0"/>
+  <rect x="120" y="245" width="210" height="15" rx="4" fill="#e2e8f0"/>
+  <rect x="120" y="270" width="160" height="15" rx="4" fill="#e2e8f0"/>
+  <rect x="120" y="310" width="210" height="15" rx="4" fill="#e2e8f0"/>
+  <rect x="120" y="335" width="180" height="15" rx="4" fill="#e2e8f0"/>
+  <rect x="120" y="360" width="200" height="15" rx="4" fill="#e2e8f0"/>
+  <rect x="120" y="400" width="120" height="15" rx="4" fill="#e2e8f0"/>
+  <rect x="120" y="425" width="150" height="15" rx="4" fill="#e2e8f0"/>
 
-  <!-- AI Processing / Network Core -->
-  <g transform="translate(530, 300)">
-    <circle cx="0" cy="0" r="60" fill="url(#hero-grad-blue)" opacity="0.8" filter="url(#drop-shadow)"/>
-    <circle cx="0" cy="0" r="45" fill="white" opacity="0.5"/>
-    <path d="M -15 -15 L 15 -15 L 15 15 L -15 15 Z M 0 -20 L 0 20 M -20 0 L 20 0" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
-    <text x="0" y="6" fill="white" font-size="20" font-weight="600" text-anchor="middle" dy=".1em">AI</text>
-    <!-- ANIMATION NEEDED: Pulse effect, rotating elements -->
-  </g>
+  <!-- AI processing arrows and lines -->
+  <path d="M360 250 C420 250, 420 250, 440 300" stroke="#0066cc" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
+  <path d="M360 320 C420 320, 420 350, 440 350" stroke="#0066cc" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
+  <path d="M360 400 C420 400, 420 380, 440 400" stroke="#0066cc" stroke-width="3" fill="none" stroke-dasharray="8,4"/>
 
-  <!-- Network Connections & Nodes -->
-  <g class="network-nodes" fill="#cccccc">
-    <!-- ANIMATION NEEDED: Nodes should appear, connections should draw dynamically -->
-    <circle cx="450" cy="150" r="15" fill="url(#hero-grad-accent)" filter="url(#drop-shadow)"/>
-    <circle cx="680" cy="180" r="18" fill="url(#hero-grad-blue)" filter="url(#drop-shadow)"/>
-    <circle cx="420" cy="450" r="16" fill="url(#hero-grad-blue)" filter="url(#drop-shadow)"/>
-    <circle cx="700" cy="400" r="20" fill="url(#hero-grad-accent)" filter="url(#drop-shadow)"/>
-    <circle cx="550" cy="500" r="12" fill="#e8e8ed" filter="url(#drop-shadow)"/>
-    <circle cx="650" cy="50" r="14" fill="#e8e8ed" filter="url(#drop-shadow)"/>
+  <!-- AI/Network Visualization -->
+  <circle cx="500" cy="300" r="150" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+  
+  <!-- Network Nodes -->
+  <circle cx="500" cy="300" r="20" fill="url(#grad2)"/>
+  <circle cx="580" cy="250" r="15" fill="url(#grad2)"/>
+  <circle cx="420" cy="350" r="15" fill="url(#grad2)"/>
+  <circle cx="550" cy="380" r="15" fill="url(#grad2)"/>
+  <circle cx="450" cy="250" r="15" fill="url(#grad2)"/>
+  <circle cx="600" cy="330" r="15" fill="url(#grad3)"/>
+  <circle cx="470" cy="400" r="15" fill="url(#grad3)"/>
+  <circle cx="410" cy="270" r="15" fill="url(#grad3)"/>
+  
+  <!-- Network Connections -->
+  <line x1="500" y1="300" x2="580" y2="250" stroke="#0066cc" stroke-width="2" stroke-opacity="0.6"/>
+  <line x1="500" y1="300" x2="420" y2="350" stroke="#0066cc" stroke-width="2" stroke-opacity="0.6"/>
+  <line x1="500" y1="300" x2="550" y2="380" stroke="#0066cc" stroke-width="2" stroke-opacity="0.6"/>
+  <line x1="500" y1="300" x2="450" y2="250" stroke="#0066cc" stroke-width="2" stroke-opacity="0.6"/>
+  <line x1="500" y1="300" x2="600" y2="330" stroke="#00e0c6" stroke-width="2" stroke-opacity="0.6"/>
+  <line x1="500" y1="300" x2="470" y2="400" stroke="#00e0c6" stroke-width="2" stroke-opacity="0.6"/>
+  <line x1="500" y1="300" x2="410" y2="270" stroke="#00e0c6" stroke-width="2" stroke-opacity="0.6"/>
+  
+  <line x1="580" y1="250" x2="600" y2="330" stroke="#cccccc" stroke-width="1.5" stroke-opacity="0.5"/>
+  <line x1="420" y1="350" x2="470" y2="400" stroke="#cccccc" stroke-width="1.5" stroke-opacity="0.5"/>
+  <line x1="450" y1="250" x2="410" y2="270" stroke="#cccccc" stroke-width="1.5" stroke-opacity="0.5"/>
+  <line x1="550" y1="380" x2="470" y2="400" stroke="#cccccc" stroke-width="1.5" stroke-opacity="0.5"/>
 
-    <line x1="530" y1="300" x2="450" y2="150" stroke="url(#hero-grad-accent)" stroke-width="2.5" stroke-dasharray="5, 5" opacity="0.7"/>
-    <line x1="530" y1="300" x2="680" y2="180" stroke="url(#hero-grad-blue)" stroke-width="3" opacity="0.8"/>
-    <line x1="530" y1="300" x2="420" y2="450" stroke="url(#hero-grad-blue)" stroke-width="2.5" stroke-dasharray="5, 5" opacity="0.7"/>
-    <line x1="530" y1="300" x2="700" y2="400" stroke="url(#hero-grad-accent)" stroke-width="3" opacity="0.8"/>
-    <line x1="530" y1="300" x2="550" y2="500" stroke="#cccccc" stroke-width="2" opacity="0.6"/>
-    <line x1="530" y1="300" x2="650" y2="50" stroke="#cccccc" stroke-width="2" opacity="0.6"/>
-  </g>
-
-  <!-- Data Flow lines -->
-  <path d="M 360 200 Q 450 250 500 280" stroke="#0066cc" stroke-width="2" fill="none" stroke-dasharray="4 4" opacity="0.6"/>
-  <path d="M 360 320 Q 430 310 510 305" stroke="#00e0c6" stroke-width="2" fill="none" stroke-dasharray="4 4" opacity="0.6"/>
-  <path d="M 360 450 Q 460 380 520 330" stroke="#0066cc" stroke-width="2" fill="none" stroke-dasharray="4 4" opacity="0.6"/>
-   <!-- ANIMATION NEEDED: Dashes moving along path -->
-
-  <text x="400" y="580" font-size="12" fill="#aaaaaa">Static Placeholder - Needs Real Animation</text>
+  <!-- Search/Conversation Elements -->
+  <rect x="620" y="150" width="130" height="40" rx="20" fill="white" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="635" y="175" font-family="SF Pro Display" font-size="12" fill="#86868b">Search query...</text>
+  
+  <rect x="600" y="210" width="150" height="30" rx="15" fill="#f5f5f7" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="615" y="230" font-family="SF Pro Display" font-size="10" fill="#86868b">Filter results</text>
+  
+  <rect x="600" y="250" width="150" height="30" rx="15" fill="#f5f5f7" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="615" y="270" font-family="SF Pro Display" font-size="10" fill="#86868b">Refine search</text>
+  
+  <!-- Result cards -->
+  <rect x="600" y="300" width="150" height="50" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="620" cy="325" r="10" fill="#e2e8f0"/>
+  <rect x="640" y="315" width="90" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="640" y="330" width="70" height="6" rx="3" fill="#e2e8f0"/>
+  
+  <rect x="600" y="360" width="150" height="50" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="620" cy="385" r="10" fill="#e2e8f0"/>
+  <rect x="640" y="375" width="90" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="640" y="390" width="70" height="6" rx="3" fill="#e2e8f0"/>
+  
+  <rect x="600" y="420" width="150" height="50" rx="12" fill="white" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="620" cy="445" r="10" fill="#e2e8f0"/>
+  <rect x="640" y="435" width="90" height="8" rx="4" fill="#e2e8f0"/>
+  <rect x="640" y="450" width="70" height="6" rx="3" fill="#e2e8f0"/>
+  
+  <!-- Animation elements -->
+  <circle cx="400" cy="80" r="10" fill="url(#grad2)" opacity="0.6">
+    <animate attributeName="cx" values="400;450;500;550;600;650;700" dur="3s" repeatCount="indefinite" />
+    <animate attributeName="cy" values="80;100;90;100;90;100;80" dur="3s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="130" cy="100" r="8" fill="url(#grad3)" opacity="0.6">
+    <animate attributeName="cx" values="130;180;230;280;330;380" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="cy" values="100;120;110;120;110;100" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="4s" repeatCount="indefinite" />
+  </circle>
+  
+  <circle cx="700" cy="500" r="12" fill="url(#grad2)" opacity="0.4">
+    <animate attributeName="cx" values="700;650;600;550;500;450;400" dur="5s" repeatCount="indefinite" />
+    <animate attributeName="cy" values="500;520;510;520;510;520;500" dur="5s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="5s" repeatCount="indefinite" />
+  </circle>
 </svg>
