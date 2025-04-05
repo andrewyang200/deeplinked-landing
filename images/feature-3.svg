@@ -1,0 +1,35 @@
+<!-- FILENAME: images/feature-3.svg -->
+<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="f3-grad-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066cc"/> <stop offset="100%" stop-color="#6c63ff"/>
+    </linearGradient>
+     <linearGradient id="f3-grad-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e0c6"/> <stop offset="100%" stop-color="#00c2e0"/>
+    </linearGradient>
+  </defs>
+  <!-- Central Node (Target Profile?) -->
+   <circle cx="150" cy="100" r="30" fill="url(#f3-grad-blue)" opacity="0.9"/>
+   <circle cx="150" cy="100" r="20" fill="white" opacity="0.5"/>
+    <path d="M140 90 L160 110 M140 110 L 160 90" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <!-- Connected Nodes -->
+  <g class="nodes">
+    <circle cx="50" cy="50" r="15" fill="#e0e0e0"/>
+    <circle cx="250" cy="50" r="18" fill="url(#f3-grad-blue)"/>
+    <circle cx="50" cy="150" r="16" fill="url(#f3-grad-accent)"/>
+    <circle cx="250" cy="150" r="15" fill="#e0e0e0"/>
+    <circle cx="150" cy="30" r="14" fill="url(#f3-grad-accent)"/>
+    <circle cx="150" cy="170" r="16" fill="url(#f3-grad-blue)"/>
+  </g>
+  <!-- Connections -->
+  <g class="connections" stroke-width="2" stroke-opacity="0.7">
+    <line x1="150" y1="100" x2="50" y2="50" stroke="#cccccc"/>
+    <line x1="150" y1="100" x2="250" y2="50" stroke="#0066cc"/>
+    <line x1="150" y1="100" x2="50" y2="150" stroke="#00e0c6" stroke-dasharray="5 5"/>
+    <line x1="150" y1="100" x2="250" y2="150" stroke="#cccccc"/>
+    <line x1="150" y1="100" x2="150" y2="30" stroke="#00e0c6"/>
+    <line x1="150" y1="100" x2="150" y2="170" stroke="#0066cc" stroke-dasharray="5 5"/>
+    <!-- Non-obvious connection -->
+    <path d="M 50 50 Q 150 70 250 150" stroke="#00e0c6" stroke-dasharray="3 3" stroke-opacity="0.5" fill="none"/>
+  </g>
+</svg>

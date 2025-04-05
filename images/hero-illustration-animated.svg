@@ -1,0 +1,78 @@
+<!-- FILENAME: hero-illustration-animated.svg (STATIC VERSION - NEEDS ANIMATION) -->
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" font-family="SF Pro Display, sans-serif">
+  <defs>
+    <linearGradient id="hero-grad-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066cc"/>
+      <stop offset="100%" stop-color="#004c99"/>
+    </linearGradient>
+    <linearGradient id="hero-grad-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e0c6"/>
+      <stop offset="100%" stop-color="#00b3a1"/>
+    </linearGradient>
+     <filter id="drop-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="2" dy="3" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background elements (subtle) -->
+  <circle cx="100" cy="100" r="150" fill="#f5f5f7" opacity="0.5"/>
+  <circle cx="700" cy="500" r="200" fill="#eaf3ff" opacity="0.4"/>
+
+  <!-- Simplified Resume -->
+  <g transform="translate(80, 150)" filter="url(#drop-shadow)">
+      <rect x="0" y="0" width="280" height="350" rx="20" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+      <rect x="20" y="30" width="240" height="25" rx="5" fill="#e8e8ed"/>
+      <rect x="20" y="75" width="200" height="15" rx="4" fill="#f0f0f0"/>
+      <rect x="20" y="100" width="240" height="15" rx="4" fill="#f0f0f0"/>
+      <rect x="20" y="125" width="180" height="15" rx="4" fill="#f0f0f0"/>
+      <rect x="20" y="160" width="240" height="15" rx="4" fill="#f0f0f0"/>
+      <rect x="20" y="185" width="210" height="15" rx="4" fill="#f0f0f0"/>
+      <rect x="20" y="220" width="240" height="15" rx="4" fill="#f0f0f0"/>
+      <rect x="20" y="245" width="150" height="15" rx="4" fill="#f0f0f0"/>
+      <rect x="20" y="280" width="240" height="15" rx="4" fill="#f0f0f0"/>
+      <rect x="20" y="305" width="190" height="15" rx="4" fill="#f0f0f0"/>
+  </g>
+
+  <!-- AI Processing / Network Core -->
+  <g transform="translate(530, 300)">
+    <circle cx="0" cy="0" r="60" fill="url(#hero-grad-blue)" opacity="0.8" filter="url(#drop-shadow)"/>
+    <circle cx="0" cy="0" r="45" fill="white" opacity="0.5"/>
+    <path d="M -15 -15 L 15 -15 L 15 15 L -15 15 Z M 0 -20 L 0 20 M -20 0 L 20 0" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.9"/>
+    <text x="0" y="6" fill="white" font-size="20" font-weight="600" text-anchor="middle" dy=".1em">AI</text>
+    <!-- ANIMATION NEEDED: Pulse effect, rotating elements -->
+  </g>
+
+  <!-- Network Connections & Nodes -->
+  <g class="network-nodes" fill="#cccccc">
+    <!-- ANIMATION NEEDED: Nodes should appear, connections should draw dynamically -->
+    <circle cx="450" cy="150" r="15" fill="url(#hero-grad-accent)" filter="url(#drop-shadow)"/>
+    <circle cx="680" cy="180" r="18" fill="url(#hero-grad-blue)" filter="url(#drop-shadow)"/>
+    <circle cx="420" cy="450" r="16" fill="url(#hero-grad-blue)" filter="url(#drop-shadow)"/>
+    <circle cx="700" cy="400" r="20" fill="url(#hero-grad-accent)" filter="url(#drop-shadow)"/>
+    <circle cx="550" cy="500" r="12" fill="#e8e8ed" filter="url(#drop-shadow)"/>
+    <circle cx="650" cy="50" r="14" fill="#e8e8ed" filter="url(#drop-shadow)"/>
+
+    <line x1="530" y1="300" x2="450" y2="150" stroke="url(#hero-grad-accent)" stroke-width="2.5" stroke-dasharray="5, 5" opacity="0.7"/>
+    <line x1="530" y1="300" x2="680" y2="180" stroke="url(#hero-grad-blue)" stroke-width="3" opacity="0.8"/>
+    <line x1="530" y1="300" x2="420" y2="450" stroke="url(#hero-grad-blue)" stroke-width="2.5" stroke-dasharray="5, 5" opacity="0.7"/>
+    <line x1="530" y1="300" x2="700" y2="400" stroke="url(#hero-grad-accent)" stroke-width="3" opacity="0.8"/>
+    <line x1="530" y1="300" x2="550" y2="500" stroke="#cccccc" stroke-width="2" opacity="0.6"/>
+    <line x1="530" y1="300" x2="650" y2="50" stroke="#cccccc" stroke-width="2" opacity="0.6"/>
+  </g>
+
+  <!-- Data Flow lines -->
+  <path d="M 360 200 Q 450 250 500 280" stroke="#0066cc" stroke-width="2" fill="none" stroke-dasharray="4 4" opacity="0.6"/>
+  <path d="M 360 320 Q 430 310 510 305" stroke="#00e0c6" stroke-width="2" fill="none" stroke-dasharray="4 4" opacity="0.6"/>
+  <path d="M 360 450 Q 460 380 520 330" stroke="#0066cc" stroke-width="2" fill="none" stroke-dasharray="4 4" opacity="0.6"/>
+   <!-- ANIMATION NEEDED: Dashes moving along path -->
+
+  <text x="400" y="580" font-size="12" fill="#aaaaaa">Static Placeholder - Needs Real Animation</text>
+</svg>
